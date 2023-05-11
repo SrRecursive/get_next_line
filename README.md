@@ -6,7 +6,7 @@
 
 ## Description
 
-This is my third project as a student in 42 Málaga. In this project I have to create a function that reads a file descriptor line by line
+This is my third project as a student in 42 Málaga. In this project I have to create a function that reads a file descriptor line by line. Bonus part requires to read multiple file descriptors
 
 <!-- Checkout -->
 
