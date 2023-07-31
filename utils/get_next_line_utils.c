@@ -3,11 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ribana-b <ribana-b@42student.malaga.com    +#+  +:+       +#+        */
+/*   By: ribana-b <ribana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 05:01:25 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/05/27 05:01:30 by ribana-b         ###   ########.fr       */
+/*   Created: 2023/07/18 08:48:10 by ribana-b          #+#    #+#             */
+/*   Updated: 2023/07/18 08:48:46 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
+
