@@ -3,31 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ribana-b <ribana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:48:36 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/07/18 10:44:52 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:01:20 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/get_next_line.h"
 
-char	*get_next_line(int fd)
+int	check_newline(char *buffer)
 {
-	t_gnlu	*gnl;
-	int i = 0;
+	int	position;
 
-	gnl = (t_gnlu *)malloc(sizeof(t_gnlu));
-	while (read(fd, gnl -> buffer, BUFFER_SIZE) > 0)
+	if (buffer == NULL)
 	{
-		printf("%c", gnl -> buffer[i]);
-		i++;
+		return (-1);
 	}
-	return (gnl -> line);
+	position = 0;
+	while (buffer[position] != '\0' && buffer[position] != '\n')
+	{
+		position++;
+	}
+	return (position);
 }
 
-int	main(void)
+char	*get_line(int fd)
 {
-	int	fd = open("../text1", O_RDWR);
-	printf("%s", get_next_line(fd));
+	char	*line;
+	char	*buffer;
+	int		bytesread;
+	int		position;
+
+	buffer = ft_calloc(BUFFER_SIZE + 1, (int)sizeof(char));
+	if (buffer == NULL)
+	{
+		return (NULL);
+	}
+	bytesread = read(fd, buffer, BUFFER_SIZE);
+	while (bytesread > 0)
+	{
+		position = check_newline(buffer);
+		if (position >= 0)
+		{
+			line = ft_strlcpy(line, buffer, position);
+			if (line == NULL)
+			{
+				free(buffer);
+				return (NULL);
+			}
+		}	
+	}
+	free(buffer);
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	char	*line;
+
+	if (fd < 0 || BUFFER_SIZE < 1)
+	{
+		return (NULL);
+	}
+	line = get_line(fd);
+	if (line == NULL)
+	{
+		return (line);
+	}
+	return (line);
 }

@@ -1,14 +1,12 @@
-<!-- Title -->
-
 # get_next_line
-
-<!-- Description -->
 
 ## Description
 
 This is my third project as a student in 42 Málaga. In this project I have to create a function that reads a file descriptor line by line. Bonus part requires to read multiple file descriptors
 
-<!-- Checkout -->
+## Update
+
+- Started to do something, did some lines of code. Despite it compiles it doesn't work yet, but it will do. +2h
 
 ## Progress
 
