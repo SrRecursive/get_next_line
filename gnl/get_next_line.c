@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ribana-b <ribana-b@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/28 20:56:28 by ribana-b          #+#    #+#             */
+/*   Updated: 2023/08/28 20:58:09 by ribana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*get_current_line(char *buffer, int fd)
@@ -24,10 +36,7 @@ char	*get_current_line(char *buffer, int fd)
 		return (line);
 	}
 	else
-	{
 		free(temp);
-		temp = NULL;
-	}
 	return (NULL);
 }
 

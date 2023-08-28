@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ribana-b <ribana-b@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/28 20:56:43 by ribana-b          #+#    #+#             */
+/*   Updated: 2023/08/28 20:58:36 by ribana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_strlen(char *str)
@@ -20,8 +32,7 @@ char	*ft_strjoin(char *s1, char *s2, int bytesread)
 
 	counter = 0;
 	counter2 = 0;
-	newstr = (char *)malloc((ft_strlen(s1) + bytesread+ 1) * sizeof(char));
-	int	test = ft_strlen(s1) + BUFFER_SIZE + 1;
+	newstr = (char *)malloc((ft_strlen(s1) + bytesread + 1) * sizeof(char));
 	if (newstr == NULL)
 		return (NULL);
 	while (counter < ft_strlen(s1))
@@ -84,7 +95,6 @@ char	*fix_temp(char *s1, int nl_index)
 	if (s1 == NULL)
 		return (NULL);
 	newstr = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
-	int	temp = ft_strlen(s1) + 1;
 	if (newstr == NULL)
 		return (NULL);
 	while (s1[nl_index + 1 + counter] != '\0')
