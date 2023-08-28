@@ -89,7 +89,7 @@ re: fclean all
 # <- test1: Makefile BUFFER_SIZE = 1-> #
 test1:
 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1
-	./a.out Makefile
+	./a.out test/10line1000chareach
 
 # <- test2: Makefile BUFFER_SIZE = 2-> #
 test2:
@@ -114,7 +114,7 @@ test5:
 # <- test6: Makefile BUFFER_SIZE = 1000-> #
 test6:
 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1000
-	./a.out Makefile
+	./a.out test/10line1char
 
 # <- Targets Declaration -> #
 .PHONY = all clean fclean re test1 test2 test3 test4 test5 test6
