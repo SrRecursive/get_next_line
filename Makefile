@@ -80,13 +80,43 @@ clean:
 
 # <- Clean Execution + Library Destruction -> #
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) ./a.out
 	@echo "$(B_RED)$(T_YELLOW)$(BOLD)Library destroyed successfully$(RESET)"
 
 # <- Fclean Execution + All Execution -> #
 re: fclean all
 
+# <- test1: Makefile BUFFER_SIZE = 1-> #
+test1:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1
+	./a.out Makefile
+
+# <- test2: Makefile BUFFER_SIZE = 2-> #
+test2:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=2
+	./a.out Makefile
+
+# <- test3: Makefile BUFFER_SIZE = 10-> #
+test3:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=10
+	./a.out Makefile
+
+# <- test4: Makefile BUFFER_SIZE = 100-> #
+test4:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=100
+	./a.out Makefile
+
+# <- test5: Makefile BUFFER_SIZE = 500-> #
+test5:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=500
+	./a.out Makefile
+
+# <- test6: Makefile BUFFER_SIZE = 1000-> #
+test6:
+	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1000
+	./a.out Makefile
+
 # <- Targets Declaration -> #
-.PHONY = all clean fclean re eztest
+.PHONY = all clean fclean re test1 test2 test3 test4 test5 test6
 
 # ========================================================================== #
