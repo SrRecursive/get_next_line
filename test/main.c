@@ -6,7 +6,7 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 15:24:51 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/08/28 09:56:27 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:06:43 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ int	main(int argc, char **argv)
 	int	x = 0;
 	while (line = get_next_line(fd))
 	{
-		printf("%d: %s\n", x, line);
+		printf("%d: %s", x, line);
 		free(line);
 		x++;
 	}
+//	while (x < 109)
+//	{
+//		line = get_next_line(fd);
+//		printf("%d: %s", x, line);
+//		free(line);
+//		x++;
+//	}
 	close(fd);
-	free(line);
 	return (0);
 }

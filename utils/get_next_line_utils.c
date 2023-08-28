@@ -6,7 +6,7 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 06:48:44 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/08/28 10:06:04 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:22:38 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ int	ft_strlen(char *str)
 {
 	int	counter;
 
-	if (str == NULL)
-	{
-		return (0);
-	}
 	counter = 0;
+	if (str == NULL)
+		return (counter);
 	while (str[counter] != '\0')
-	{
 		counter++;
-	}
 	return (counter);
 }
 
@@ -38,14 +34,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	counter2 = 0;
 	newstr = (char *)malloc((ft_strlen(s1) + BUFFER_SIZE + 1) * sizeof(char));
 	if (newstr == NULL)
-	{
 		return (NULL);
-	}
 	while (counter < ft_strlen(s1))
 	{
 		newstr[counter] = s1[counter];
 		counter++;
 	}
+	if (s1 != NULL)
+		free(s1);
 	while (counter2 < BUFFER_SIZE)
 	{
 		newstr[counter] = s2[counter2];
@@ -61,6 +57,8 @@ int	check_newline(char	*s1)
 	int	index;
 
 	index = 0;
+	if (s1 == NULL)
+		return (-1);
 	while (s1[index] != '\0')
 	{
 		if (s1[index] == '\n')
@@ -76,15 +74,14 @@ char	*get_line(char *s2, int bytes)
 {
 	char	*s1;
 
-	s1 = (char *)malloc((bytes + 1) * sizeof(char));
+	s1 = (char *)malloc((bytes + 2) * sizeof(char));
 	if (s1 == NULL)
-	{
 		return (NULL);
-	}
-	s1[bytes] = '\0';
-	while (bytes--)
+	s1[bytes + 1] = '\0';
+	while (bytes >= 0)
 	{
 		s1[bytes] = s2[bytes];
+		bytes--;
 	}
 	return (s1);
 }
@@ -95,11 +92,11 @@ char	*fix_temp(char *s1, int nl_index)
 	int		counter;
 
 	counter = 0;
+	if (s1 == NULL)
+		return (NULL);
 	newstr = (char *)malloc((ft_strlen(s1) - nl_index + 1) * sizeof(char));
 	if (newstr == NULL)
-	{
 		return (NULL);
-	}
 	while (counter < ft_strlen(s1) - nl_index)
 	{
 		newstr[counter] = s1[nl_index + 1 + counter];

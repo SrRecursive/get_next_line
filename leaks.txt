@@ -1,0 +1,122 @@
+0: # ========================================================================== #
+1: 
+2: # <- Color Library -> #
+3: 
+4: # <-- Text Color --> #
+5: T_BLACK = \033[30m
+6: T_RED = \033[31m
+7: T_GREEN = \033[32m
+8: T_YELLOW = \033[33m
+9: T_BLUE = \033[34m
+10: T_MAGENTA = \033[35m
+11: T_CYAN = \033[36m
+12: T_WHITE = \033[37m
+13: 
+14: # <-- Text Style --> #
+15: BOLD = \033[1m
+16: ITALIC = \033[3m
+17: UNDERLINE = \033[4m
+18: STRIKETHROUGH = \033[9m
+19: 
+20: # <-- Background Color --> #
+21: B_BLACK = \033[40m
+22: B_RED = \033[41m
+23: B_GREEN = \033[42m
+24: B_YELLOW = \033[43m
+25: B_BLUE = \033[44m
+26: B_MAGENTA = \033[45m
+27: B_CYAN = \033[46m
+28: B_WHITE = \033[47m
+29: 
+30: # <-- Reset Everything --> #
+31: RESET = \033[0m
+32: 
+33: # ========================================================================== #
+34: 
+35: # <- Library's Name -> #
+36: NAME = gnl.a
+37: 
+38: # <- Compilation Command -> #
+39: CC = gcc
+40: 
+41: # <- Compilation Flags -> #
+42: CFLAGS = -Wall -Wextra -Werror
+43: 
+44: # <- Directories -> #
+45: SRC_DIR = src/
+46: UTILS_DIR = utils/
+47: 
+48: # <- Files -> #
+49: SRC_FILES = get_next_line.c
+50: UTILS_FILES = get_next_line_utils.c
+51: 
+52: # <- Directories + Files -> # 
+53: SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+54: UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+55: OBJ_SRC = $(SRC:.c=.o)
+56: OBJ_UTILS = $(UTILS:.c=.o)
+57: 
+58: # ========================================================================== #
+59: 
+60: # <- Main Target -> #
+61: all: $(NAME)
+62: 
+63: # < - Library Creation -> #
+64: $(NAME): $(OBJ_SRC) $(OBJ_UTILS)
+65: 	@echo "$(B_GREEN)$(T_YELLOW)$(BOLD)Objects created successfully$(RESET)"
+66: 	ar rcs $(NAME) $(OBJ_SRC) $(OBJ_UTILS)
+67: 	@echo "$(B_GREEN)$(T_YELLOW)$(BOLD)Library created successfully$(RESET)"
+68: 
+69: # <- Objects Creation -> #
+70: %.o: %.c
+71: 	$(CC) $(CFLAGS) -c $< -o $@
+72: 
+73: # <- Objects Destruction -> #
+74: clean:
+75: 	rm -f $(OBJ_SRC)
+76: 	@echo "$(B_RED)$(T_YELLOW)$(BOLD)Source Object destroyed successfully$(RESET)"
+77: 	rm -f $(OBJ_UTILS)
+78: 	@echo "$(B_RED)$(T_YELLOW)$(BOLD)Utils Objects destroyed successfully$(RESET)"
+79: 
+80: # <- Clean Execution + Library Destruction -> #
+81: fclean: clean
+82: 	rm -f $(NAME) ./a.out
+83: 	@echo "$(B_RED)$(T_YELLOW)$(BOLD)Library destroyed successfully$(RESET)"
+84: 
+85: # <- Fclean Execution + All Execution -> #
+86: re: fclean all
+87: 
+88: # <- test1: Makefile BUFFER_SIZE = 1-> #
+89: test1:
+90: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1
+91: 	./a.out Makefile
+92: 
+93: # <- test2: Makefile BUFFER_SIZE = 2-> #
+94: test2:
+95: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=2
+96: 	./a.out Makefile
+97: 
+98: # <- test3: Makefile BUFFER_SIZE = 10-> #
+99: test3:
+100: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=10
+101: 	./a.out Makefile
+102: 
+103: # <- test4: Makefile BUFFER_SIZE = 100-> #
+104: test4:
+105: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=100
+106: 	./a.out Makefile
+107: 
+108: # <- test5: Makefile BUFFER_SIZE = 500-> #
+109: test5:
+110: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=500
+111: 	./a.out Makefile
+112: 
+113: # <- test6: Makefile BUFFER_SIZE = 1000-> #
+114: test6:
+115: 	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1000
+116: 	./a.out Makefile
+117: 
+118: # <- Targets Declaration -> #
+119: .PHONY = all clean fclean re test1 test2 test3 test4 test5 test6
+120: 
+121: # ========================================================================== #
