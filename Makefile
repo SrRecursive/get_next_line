@@ -34,7 +34,7 @@ RESET = \033[0m
 # ========================================================================== #
 
 # <- Library's Name -> #
-NAME = libftprintf.a
+NAME = gnl.a
 
 # <- Compilation Command -> #
 CC = gcc
@@ -87,6 +87,6 @@ fclean: clean
 re: fclean all
 
 # <- Targets Declaration -> #
-.PHONY = all clean fclean re
+.PHONY = all clean fclean re eztest
 
 # ========================================================================== #

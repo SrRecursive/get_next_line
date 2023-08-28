@@ -6,7 +6,7 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 05:01:01 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/08/06 17:02:27 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/08/28 06:39:18 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,24 @@
 /* <--Libraries Section--> */
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+
+/* <--Structs Section--> */
+typedef struct s_storage
+{
+	char				*line;
+	int					linelen;
+	int					afternl;
+	struct s_storage	*next;
+}						t_storage;
 
 /* <--Functions Section--> */
 
-char	*ft_calloc(int nbytes, int size);
-char	*ft_strlcpy(char *line, char *buffer, int position);
-char	*get_next_line(int fd);
-int		check_newline(char *buffer);
-int		ft_strlen(char *str);
+int			ft_strlen(char *str);
+char		*buff_to_line(char *buffer, t_storage *storage, int bytes);
+t_storage	*format_line(t_storage *storage);
+t_storage	*get_current_line(t_storage *storage, int fd);
+void		full_free(t_storage **storage);
+char		*get_next_line(int fd);
 
 #endif
