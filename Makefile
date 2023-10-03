@@ -43,18 +43,24 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 # <- Directories -> #
-SRC_DIR = src/
-UTILS_DIR = utils/
+SRC_DIR = ./
+UTILS_DIR = ./
 
 # <- Files -> #
 SRC_FILES = get_next_line.c
 UTILS_FILES = get_next_line_utils.c
+SRC_BONUS_FILES = get_next_line_bonus.c
+UTILS_BONUS_FILES = get_next_line_utils_bonus.c
 
 # <- Directories + Files -> # 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
-OBJ_SRC = $(SRC:.c=.o)
-OBJ_UTILS = $(UTILS:.c=.o)
+SRC_BONUS = $(addprefix $(SRC_DIR), $(SRC_BONUS_FILES))
+UTILS_BONUS = $(addprefix $(UTILS_DIR), $(UTILS_BONUS_FILES))
+
+# <- Object Rule ->
+OBJ_SRC = $(SRC:.c=.o) $(SRC_BONUS:.c=.o)
+OBJ_UTILS = $(UTILS:.c=.o) $(UTILS_BONUS:.c=.o)
 
 # ========================================================================== #
 
@@ -71,6 +77,12 @@ $(NAME): $(OBJ_SRC) $(OBJ_UTILS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# <- Bonus -> #
+bonus: $(OBJ_SRC_BONUS) $(OBJ_UTILS_BONUS)
+	@echo "$(B_GREEN)$(T_YELLOW)$(BOLD)Objects created successfully$(RESET)"
+	ar rcs $(NAME) $(OBJ_SRC_BONUS) $(OBJ_UTILS_BONUS)
+	@echo "$(B_GREEN)$(T_YELLOW)$(BOLD)Library created successfully$(RESET)"
+
 # <- Objects Destruction -> #
 clean:
 	rm -f $(OBJ_SRC)
@@ -86,37 +98,7 @@ fclean: clean
 # <- Fclean Execution + All Execution -> #
 re: fclean all
 
-# <- test1: Makefile BUFFER_SIZE = 1-> #
-test1:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1
-	./a.out test/10line1000chareach
-
-# <- test2: Makefile BUFFER_SIZE = 2-> #
-test2:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=2
-	./a.out Makefile
-
-# <- test3: Makefile BUFFER_SIZE = 10-> #
-test3:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=10
-	./a.out Makefile
-
-# <- test4: Makefile BUFFER_SIZE = 100-> #
-test4:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=100
-	./a.out Makefile
-
-# <- test5: Makefile BUFFER_SIZE = 500-> #
-test5:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=500
-	./a.out Makefile
-
-# <- test6: Makefile BUFFER_SIZE = 1000-> #
-test6:
-	gcc -g test/main.c src/get_next_line.c utils/get_next_line_utils.c -D BUFFER_SIZE=1000
-	./a.out test/10line1char
-
 # <- Targets Declaration -> #
-.PHONY = all clean fclean re test1 test2 test3 test4 test5 test6
+.PHONY = all bonus clean fclean re
 
 # ========================================================================== #
