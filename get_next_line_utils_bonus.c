@@ -6,11 +6,11 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:42:53 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/10/03 13:58:57 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:14:54 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(const char *str)
 {
