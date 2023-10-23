@@ -2,12 +2,16 @@
 
 ## Description
 
-This is my third project as a student in 42 Málaga. In this project I have to create a function that reads a file descriptor line by line. Bonus part requires to read multiple file descriptors
+Get_next_line is a function that returns a line from a file descriptor.
 
-## Update
+Bonus does the same thing, but requires to handle multiple file descriptors.
 
-- Started to do something, did some lines of code. Despite it compiles it doesn't work yet, but it will do. +2h
+## Allowed functions
+
+- [read()](https://man7.org/linux/man-pages/man2/read.2.html)
+- [malloc()](https://www.man7.org/linux/man-pages/man3/malloc.3.html)
+- [free()](https://linux.die.net/man/3/free)
 
 ## Progress
 
-If you want to check my progress as a student in 42 Málaga check out my <a href = "https://github.com/SrRecursive/42Malaga">main repository</a>!
+If you want to check my progress as a student in 42 Málaga check out my [main repository](https://github.com/SrRecursive/42Malaga)!
