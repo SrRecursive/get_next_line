@@ -93,7 +93,7 @@ char	*read_temp_again(char *temp)
 
 char	*get_next_line(int fd)
 {
-	static char	*temp = NULL;
+	static char	*temp;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
