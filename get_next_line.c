@@ -19,13 +19,20 @@ char	*read_file(char *temp, int fd)
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (buffer == NULL)
-		return (free(temp), NULL);
+	{
+		free(temp);
+		return (NULL);
+	}
 	bytesread = 1;
 	while (bytesread > 0 && ft_strchr(temp, '\n') < 0)
 	{
 		bytesread = read(fd, buffer, BUFFER_SIZE);
 		if (bytesread < 0)
-			return (free(buffer), free(temp), NULL);
+		{
+			free(buffer);
+			free(temp);
+			return (NULL);
+		}
 		buffer[bytesread] = '\0';
 		temp = ft_strjoin(temp, buffer);
 	}
@@ -63,8 +70,8 @@ char	*read_temp_again(char *temp)
 	int		index;
 	int		counter;
 
-	if (temp[0] == '\0')
-		return (free(temp), NULL);
+	if (temp == NULL)
+		return (NULL);
 	index = 0;
 	while (temp[index] != '\n' && temp[index] != '\0')
 		index++;
@@ -76,14 +83,12 @@ char	*read_temp_again(char *temp)
 	newtemp = (char *)malloc((counter + 1) * sizeof(char));
 	if (newtemp == NULL)
 		return (NULL);
-	counter = 0;
-	while (temp[index + counter] != '\0')
-	{
+	counter = -1;
+	while (temp[index + ++counter] != '\0')
 		newtemp[counter] = temp[index + counter];
-		counter++;
-	}
 	newtemp[counter] = '\0';
-	return (free(temp), newtemp);
+	free(temp);
+	return (newtemp);
 }
 
 char	*get_next_line(int fd)
@@ -104,6 +109,11 @@ char	*get_next_line(int fd)
 	if (temp == NULL)
 		return (NULL);
 	line = read_temp(temp);
+	if (temp[0] == '\0')
+	{
+		free(temp);
+		temp = NULL;
+	}
 	temp = read_temp_again(temp);
 	return (line);
 }
