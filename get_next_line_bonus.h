@@ -21,7 +21,6 @@
 #  define FD_MAX 1024
 # endif
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
