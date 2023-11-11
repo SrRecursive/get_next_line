@@ -2,15 +2,18 @@
 
 ## Description
 
-Get_next_line is a function that returns a line from a file descriptor.
+Get_next_line is a function that returns a single line from a file descriptor. Every time is called, it has to return the next line.
 
-Bonus does the same thing, but requires to handle multiple file descriptors.
+### Bonus
+
+I have to recreate get_next_line but it has to handle multiple file descriptors.
 
 ## Allowed functions
 
 - [read()](https://man7.org/linux/man-pages/man2/read.2.html)
 - [malloc()](https://www.man7.org/linux/man-pages/man3/malloc.3.html)
 - [free()](https://linux.die.net/man/3/free)
+- Any function I code from scratch.
 
 ## Progress
 
