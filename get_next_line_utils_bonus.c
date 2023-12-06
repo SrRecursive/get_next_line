@@ -6,13 +6,13 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:42:53 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/10/20 14:14:54 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:03:17 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen_gnl(const char *str)
 {
 	int	counter;
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (counter);
 }
 
-int	ft_strchr(char *str, int character)
+int	ft_strchr_gnl(char *str, int character)
 {
 	int	index;
 
@@ -40,14 +40,14 @@ int	ft_strchr(char *str, int character)
 	return (-1);
 }
 
-char	*ft_strjoin(char *str, char *str2)
+char	*ft_strjoin_gnl(char *str, char *str2)
 {
 	char	*newstr;
 	int		counter;
 	int		counter2;
 
-	counter = ft_strlen(str);
-	counter2 = ft_strlen(str2);
+	counter = ft_strlen_gnl(str);
+	counter2 = ft_strlen_gnl(str2);
 	newstr = (char *)malloc((counter + counter2 + 1) * sizeof(char));
 	if (newstr == NULL)
 		return (NULL);

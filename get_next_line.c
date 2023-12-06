@@ -6,7 +6,7 @@
 /*   By: ribana-b <ribana-b@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:30:27 by ribana-b          #+#    #+#             */
-/*   Updated: 2023/10/03 13:36:16 by ribana-b         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:02:41 by ribana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*read_file(char *temp, int fd)
 		return (NULL);
 	}
 	bytesread = 1;
-	while (bytesread > 0 && ft_strchr(temp, '\n') < 0)
+	while (bytesread > 0 && ft_strchr_gnl(temp, '\n') < 0)
 	{
 		bytesread = read(fd, buffer, BUFFER_SIZE);
 		if (bytesread < 0)
@@ -34,7 +34,7 @@ char	*read_file(char *temp, int fd)
 			return (NULL);
 		}
 		buffer[bytesread] = '\0';
-		temp = ft_strjoin(temp, buffer);
+		temp = ft_strjoin_gnl(temp, buffer);
 	}
 	free(buffer);
 	return (temp);
